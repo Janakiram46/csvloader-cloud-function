@@ -1,7 +1,7 @@
 import os
 from google.cloud import bigquery
 
-def csv_loader(data, context):
+def pjr_csv_loader(data, context):
         client = bigquery.Client()
         dataset_id = os.environ['DATASET']
         dataset_ref = client.dataset(dataset_id)
@@ -27,7 +27,7 @@ def csv_loader(data, context):
                 job_config=job_config)
 
         print('Starting job {}'.format(load_job.job_id))
-        print('Function=csv_loader, Version=' + os.environ['VERSION'])
+        print('Function=pjr_csv_loader, Version=' + os.environ['VERSION'])
         print('File: {}'.format(data['name']))
 
         load_job.result()  # wait for table load to complete.
